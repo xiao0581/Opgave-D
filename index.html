@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+      <div class="container py-5">
+      <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <input type="number" v-model="getId" placeholder="Please enter ID" class="form-control mb-2">
+                <button v-on:click="getAll" id="getAllButton" class="btn btn-primary ">Get All</button>
+                <button v-on:click="getById(getId)" id="getByIdButton" class="btn btn-primary ">Get By ID</button>
+                <button v-on:click="deleteMethod(getId)" id="deleteButton" class="btn btn-danger ">Delete</button>
+                <button v-on:click="sortById()">sortById</button>
+                <input placeholder="name" type="text" v-model="name" >
+                <button v-on:click="filterByName(name)" class="btn btn-primary">filterByName</button>
+            </div>
+            <div id="table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Country</th>                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="participant in participants" id="tb" >
+                            <td>{{participant.id}}</td>
+                            <td>{{participant.name}}</td>
+                            <td>{{participant.age}}</td>
+                            <td>{{participant.country}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <input type="text" v-model="add.name" placeholder="name"   class="form-control mb-2">
+                <input type="number" v-model.number="add.age" placeholder="age" class="form-control mb-2">
+                <input type="text" v-model="add.country" placeholder="country"  class="form-control mb-2">
+                <button v-on:click="addMethod()" class="btn btn-success" id="addButton">Add</button>
+            </div>
+
+        </div>
+    </div>
+ </div>
+</div>
+    <script src="index.js"></script>
+</body>
+
+</html>
